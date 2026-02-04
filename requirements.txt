@@ -1,0 +1,22 @@
+# 项目依赖
+
+# 语音识别
+sherpa-onnx
+numpy
+
+# 音频处理
+ffmpeg-python
+
+# 飞书API
+飞书API通过OpenClaw内置支持
+
+# 系统工具
+subprocess
+datetime
+json
+os
+sys
+logging
+
+# 可选依赖
+# openclaw - 需要单独安装: npm install -g openclaw
