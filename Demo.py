@@ -17,7 +17,7 @@ from asr_english import RespeakerASR
 
 # 配置
 DEFAULT_GROUP = "Demo Test Group"
-GROUP_CHAT_ID = "oc_837f7a5642469ab235750f1bec94414f"
+GROUP_CHAT_ID = "your-group-chat-id"  # 请替换为您的飞书群组ID
 
 def parse_natural_language(text: str) -> dict:
     """

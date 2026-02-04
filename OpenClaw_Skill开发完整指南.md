@@ -1,13 +1,41 @@
-# OpenClaw Skill开发指南：飞书互动式会议卡片
+# OpenClaw Skill开发指南：语音输入，生成飞书互动式会议卡片（联动Seeed Studio reSpeaker XVF 3800）
 
 > ---
 > 想让你的机器人具备语音交互能力？试试 Seeed Studio 的 ReSpeaker 系列吧！
 > **reSpeaker XVF3800** 是一款基于 XMOS XVF3800 芯片的专业级 4 麦克风圆形阵列麦克风，即使在嘈杂的环境中也能清晰地拾取目标语音。它具备双模式、360° 远场语音拾取（最远 5 米）、自动回声消除 (AEC)、自动增益控制 (AGC)、声源定位 (DoA)、去混响、波束成形和噪声抑制等功能。结合飞书 OpenClaw 机器人，您可以打造语音唤醒 + AI 智能回复的完整办公助手解决方案。
-> 
+> [项目源码仓库](https://github.com/DengMingXi777GZ/openclaw-feishu-InteractMeetingCard)
+> [ReSpeaker产品源码](https://github.com/respeaker)
 > [ReSpeaker 四麦克风阵列 | Seeed Studio 购买链接](https://www.seeedstudio.com.cn/product/respeaker-mic-array-v2-0)
 > 
 > ![reSpeaker XVF3800](https://files.seeedstudio.com/wiki/respeaker_xvf3800_usb/respeaker-banner.jpg)
 > ---
+
+## 结果展示
+
+以下是本项目的实际运行效果演示：
+
+### 演示视频
+
+![Demo GIF](demo.gif)
+
+### 功能演示说明
+
+视频中展示了完整的语音交互流程：
+
+1. **语音唤醒** - 使用ReSpeaker麦克风阵列进行语音采集
+2. **语音识别** - Whisper模型实时识别语音指令
+3. **信息提取** - 自动解析会议主题、时间、地点、参与者
+4. **卡片生成** - 创建精美的飞书互动式会议卡片
+5. **一键发送** - 卡片发送到指定飞书群组
+6. **日程创建** - 点击卡片按钮直接在飞书日历创建事件
+
+### 实际效果截图
+
+运行成功后，飞书群组将收到如下互动式卡片：
+
+![alt text](image.png)
+
+---
 
 ## 项目背景
 
@@ -220,7 +248,7 @@ def send_meeting_card(params: Dict[str, Any]) -> Dict[str, Any]:
         card_content = create_meeting_card(params)
         
         # 获取群组ID（可以在参数中指定，也可以使用默认值）
-        group_chat_id = params.get("group_chat_id", "oc_837f7a564514f")
+        group_chat_id = params.get("group_chat_id", "your-group-chat-id")  # 请替换为您的飞书群组ID
         
         # 使用OpenClaw的message工具发送
         # 这里需要调用OpenClaw的message功能
@@ -528,32 +556,3 @@ python3 -c "import json; print(json.dumps(card_content, indent=2))"
    # 测试卡片创建
    python3 send_meeting_card.py
    ```
-
-## 结果展示
-
-以下是本项目的实际运行效果演示：
-
-### 演示视频
-
-<video src="DemoVideo.mp4" controls width="100%"></video>
-
-### 功能演示说明
-
-视频中展示了完整的语音交互流程：
-
-1. **语音唤醒** - 使用ReSpeaker麦克风阵列进行语音采集
-2. **语音识别** - Whisper模型实时识别语音指令
-3. **信息提取** - 自动解析会议主题、时间、地点、参与者
-4. **卡片生成** - 创建精美的飞书互动式会议卡片
-5. **一键发送** - 卡片发送到指定飞书群组
-6. **日程创建** - 点击卡片按钮直接在飞书日历创建事件
-
-### 实际效果截图
-
-运行成功后，飞书群组将收到如下互动式卡片：
-
-
-![alt text](image.png)
-
-
-

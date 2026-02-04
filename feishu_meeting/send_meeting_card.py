@@ -183,7 +183,7 @@ def send_meeting_card(params: Dict[str, Any]) -> Dict[str, Any]:
         card_content = create_meeting_card(params)
         
         # 获取群组ID
-        group_chat_id = params.get("group_chat_id", "oc_837f7a5642469ab235750f1bec94414f")
+        group_chat_id = params.get("group_chat_id", "your-group-chat-id")  # 请替换为您的飞书群组ID
         
         # 发送消息
         result = send_feishu_message(group_chat_id, card_content)

@@ -234,7 +234,7 @@ tail -f ~/.openclaw/logs/gateway.log
 
 ### 演示视频
 
-<video src="DemoVideo.mp4" controls width="100%"></video>
+![Demo GIF](demo.gif)
 
 ### 卡片效果截图
 
